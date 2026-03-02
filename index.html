@@ -7,10 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1 class="page-title">Pricing</h1>
+    <div class="billing-toggle" aria-label="Billing period toggle">
+        <button type="button" class="billing-toggle-option billing-toggle-option--active" data-billing="monthly" aria-pressed="true">
+            Monthly
+        </button>
+        <button type="button" class="billing-toggle-option" data-billing="yearly" aria-pressed="false">
+            Yearly
+        </button>
+    </div>
     <div class="cards-container">
-        <div class="card">
+        <div class="card" data-plan="hobby">
             <h1 class="card-title">Hobby</h1>
-            <p class="card-price">Free</p>
+            <p class="card-price"
+               data-price-monthly="Free"
+               data-price-yearly="Free">
+               Free
+            </p>
             <div class="card-content">
                 <p class="includes-text">Includes:</p>
                 <ul class="features-list">
@@ -30,9 +43,16 @@
             </div>
             <button class="download-button">Download</button>
         </div>
-        <div class="card">
-            <h1 class="card-title">Pro</h1>
-            <p class="card-price">$20/mo.</p>
+        <div class="card" data-plan="pro">
+            <div class="card-header">
+                <h1 class="card-title">Pro</h1>
+                <span class="card-tag card-tag--recommended">Recommended</span>
+            </div>
+            <p class="card-price"
+               data-price-monthly="$20/mo."
+               data-price-yearly="$200/yr.">
+               $20/mo.
+            </p>
             <div class="card-content">
                 <p class="includes-text">Everything in Hobby, plus:</p>
                 <ul class="features-list">
@@ -56,9 +76,13 @@
             </div>
             <button class="download-button">Get Pro</button>
         </div>
-        <div class="card">
+        <div class="card" data-plan="ultra">
             <h1 class="card-title">Ultra</h1>
-            <p class="card-price">$40/mo.</p>
+            <p class="card-price"
+               data-price-monthly="$40/mo."
+               data-price-yearly="$400/yr.">
+               $40/mo.
+            </p>
             <div class="card-content">
                 <p class="includes-text">Everything in Pro, plus:</p>
                 <ul class="features-list">
@@ -83,5 +107,242 @@
             <button class="download-button">Go Ultra</button>
         </div>
     </div>
+
+    <section class="business-plans">
+        <h3 class="section-title">Business Plans</h3>
+        <div class="cards-container cards-container--business">
+            <div class="card" data-plan="teams">
+                <h1 class="card-title">Teams</h1>
+                <p class="card-price"
+                   data-price-monthly="$40 / user / mo."
+                   data-price-yearly="$400 / user / yr.">
+                   $40 / user / mo.
+                </p>
+                <div class="card-content">
+                    <p class="includes-text">Built for growing teams:</p>
+                    <ul class="features-list">
+                        <li>
+                            <span class="checkmark">✓</span>
+                            Team workspace & shared settings
+                        </li>
+                        <li>
+                            <span class="checkmark">✓</span>
+                            Admin controls & billing
+                        </li>
+                        <li>
+                            <span class="checkmark">✓</span>
+                            Standard support
+                        </li>
+                    </ul>
+                </div>
+                <button class="download-button">Get Teams</button>
+            </div>
+            <div class="card" data-plan="enterprise">
+                <h1 class="card-title">Enterprise</h1>
+                <p class="card-price"
+                   data-price-monthly="Custom"
+                   data-price-yearly="Custom">
+                   Custom
+                </p>
+                <div class="card-content">
+                    <p class="includes-text">For large organizations:</p>
+                    <ul class="features-list">
+                        <li>
+                            <span class="checkmark">✓</span>
+                            SSO / SAML & advanced security
+                        </li>
+                        <li>
+                            <span class="checkmark">✓</span>
+                            Enterprise compliance support
+                        </li>
+                        <li>
+                            <span class="checkmark">✓</span>
+                            Dedicated success manager
+                        </li>
+                    </ul>
+                </div>
+                <button class="download-button">Contact Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="qa-section">
+        <div class="qa-layout">
+            <div class="qa-column qa-column--title">
+                <h3 class="qa-title">Questions &amp; Answers</h3>
+                <p class="qa-intro">
+                    Find quick answers to the most common questions about plans, billing, and usage.
+                </p>
+            </div>
+            <div class="qa-column qa-column--accordion">
+                <div class="qa-accordion" aria-label="Frequently asked questions">
+                    <details class="qa-item" open>
+                        <summary class="qa-question">
+                            <span>What is the right plan for me?</span>
+                            <span class="qa-chevron" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="qa-answer-wrapper">
+                            <p class="qa-answer">
+                                Hobby is great for exploring, Pro is best for individual daily use, and Business plans fit teams that need collaboration and admin controls.
+                            </p>
+                        </div>
+                    </details>
+                    <details class="qa-item">
+                        <summary class="qa-question">
+                            <span>What are my payment options?</span>
+                            <span class="qa-chevron" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="qa-answer-wrapper">
+                            <p class="qa-answer">
+                                We accept major credit and debit cards. Business customers can also request invoice-based billing on Enterprise.
+                            </p>
+                        </div>
+                    </details>
+                    <details class="qa-item">
+                        <summary class="qa-question">
+                            <span>How does usage-based pricing work?</span>
+                            <span class="qa-chevron" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="qa-answer-wrapper">
+                            <p class="qa-answer">
+                                Each plan includes generous baseline limits. If you exceed them, additional usage is billed at a transparent per-unit rate.
+                            </p>
+                        </div>
+                    </details>
+                    <details class="qa-item">
+                        <summary class="qa-question">
+                            <span>Can I change or cancel my plan?</span>
+                            <span class="qa-chevron" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="qa-answer-wrapper">
+                            <p class="qa-answer">
+                                Yes. You can upgrade, downgrade, or cancel at any time. Changes take effect on your next billing cycle.
+                            </p>
+                        </div>
+                    </details>
+                    <details class="qa-item">
+                        <summary class="qa-question">
+                            <span>Do you offer discounts for teams?</span>
+                            <span class="qa-chevron" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="qa-answer-wrapper">
+                            <p class="qa-answer">
+                                Teams and Enterprise plans include volume-based discounts. Contact sales to tailor a package for your organization.
+                            </p>
+                        </div>
+                    </details>
+                    <details class="qa-item">
+                        <summary class="qa-question">
+                            <span>Is my data secure?</span>
+                            <span class="qa-chevron" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="qa-answer-wrapper">
+                            <p class="qa-answer">
+                                We use industry-standard encryption in transit and at rest, with additional security and compliance options on Enterprise.
+                            </p>
+                        </div>
+                    </details>
+                    <details class="qa-item">
+                        <summary class="qa-question">
+                            <span>Can I try Business plans before committing?</span>
+                            <span class="qa-chevron" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="qa-answer-wrapper">
+                            <p class="qa-answer">
+                                Our team can help you run a pilot with a subset of users so you can validate fit before rolling out broadly.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="get-started">
+        <h1 class="get-started-title">Get started</h1>
+        <div class="get-started-actions">
+            <button class="get-started-button get-started-button--primary">
+                Download
+            </button>
+            <button class="get-started-button get-started-button--secondary">
+                Contact sales
+            </button>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <p class="site-footer-text">© 2026 Your Company. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const billingToggleButtons = Array.from(document.querySelectorAll('.billing-toggle-option'));
+        const priceElements = Array.from(document.querySelectorAll('.card-price'));
+        const qaDetails = Array.from(document.querySelectorAll('.qa-item'));
+
+        function setBilling(billing) {
+            billingToggleButtons.forEach(btn => {
+                const isActive = btn.getAttribute('data-billing') === billing;
+                btn.classList.toggle('billing-toggle-option--active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+            });
+
+            priceElements.forEach(priceEl => {
+                const monthly = priceEl.getAttribute('data-price-monthly');
+                const yearly = priceEl.getAttribute('data-price-yearly');
+                const next = billing === 'yearly' ? yearly : monthly;
+
+                if (next) priceEl.textContent = next;
+            });
+        }
+
+        billingToggleButtons.forEach(btn => {
+            btn.addEventListener('click', () => setBilling(btn.getAttribute('data-billing')));
+        });
+
+        // Ensure UI matches default active state
+        setBilling('monthly');
+
+        // Accordion logic: only one QA item open at a time
+        qaDetails.forEach((item) => {
+            item.addEventListener('toggle', () => {
+                if (!item.open) return;
+                qaDetails.forEach((other) => {
+                    if (other !== item) {
+                        other.open = false;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

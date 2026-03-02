@@ -8,10 +8,43 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background-color: #f5f5f5;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
+}
+
+.page-title {
+    font-size: 48px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.billing-toggle {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 999px;
+    background-color: #e6e5e0;
+    margin-bottom: 10vh;
+    gap: 4px;
+}
+
+.billing-toggle-option {
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #555;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.billing-toggle-option--active {
+    background-color: #333;
+    color: #f5f5f5;
 }
 
 .cards-container {
@@ -21,15 +54,62 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
+    margin-top: 16px;
+}
+
+.cards-container--business {
+    width: min(calc(320px * 3 + 32px * 2), 100%);
+    justify-content: space-between;
+    background-color: #fbfbf8;
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.cards-container--business .card {
+    flex: 1 1 0;
+    width: auto;
+    --card-bg: #eeede8;
+    background-color: var(--card-bg);
+}
+
+.business-plans {
+    margin-top: 20vh;
+    margin-bottom: 15vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+    margin-bottom: 24px;
 }
 
 .card {
-    background-color: #d3cfbe;
-    border-radius: 12px;
-    padding: 40px 32px;
+    --card-bg: #beb9a9;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 32px 32px;
     width: 320px;
-    min-height: 360px;
+    min-height: 440px;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.card:hover,
+.card:focus-within {
+    background-color: color-mix(in srgb, var(--card-bg), white 10%);
+}
+
+.card[data-plan="pro"] {
+    border: 8px solid #d0e8ff;
 }
 
 .card-title {
@@ -37,6 +117,33 @@ body {
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.card-tag {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.card-tag--recommended {
+    background-color: #d0e8ff;
+    color: #0b3b70;
+}
+
+.card[data-plan="pro"] .card-tag--recommended {
+    position: absolute;
+    top: 24px;
+    right: 24px;
 }
 
 .card-price {
@@ -47,6 +154,7 @@ body {
 
 .card-content {
     margin-bottom: 24px;
+    flex: 1;
 }
 
 .includes-text {
@@ -88,10 +196,176 @@ body {
     transition: background-color 0.2s ease;
 }
 
+.card[data-plan="pro"] .download-button {
+    background-color: #000;
+    color: #f5f5f5;
+}
+
+.card[data-plan="pro"] .download-button:hover,
+.card[data-plan="pro"] .download-button:active {
+    background-color: #333333;
+}
+
 .download-button:hover {
     background-color: #D8D6CE;
 }
 
 .download-button:active {
+    background-color: #D8D6CE;
+}
+
+.qa-section {
+    width: 100%;
+    margin-top: 10vh;
+}
+
+.qa-layout {
+    max-width: min(calc(320px * 3 + 32px * 2), 100%);
+    margin: 0 auto;
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+.qa-column--title {
+    flex: 1;
+}
+
+.qa-column--accordion {
+    flex: 0 0 50%;
+}
+
+.qa-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.qa-intro {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.qa-accordion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.qa-item {
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 16px 24px;
+}
+
+.qa-question {
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    list-style: none;
+}
+
+.qa-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.qa-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.qa-chevron svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.qa-item[open] .qa-chevron svg {
+    transform: rotate(-180deg);
+}
+
+.qa-chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
+}
+
+.qa-item:hover .qa-chevron {
+    background-color: #d0e8ff;
+}
+
+.qa-item[open] {
+    background-color: #EEEDE9;
+}
+
+.qa-answer {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.get-started {
+    width: min(calc(320px * 3 + 32px * 2), 100%);
+    margin: 20vh auto 40px;
+    padding: 32px 24px 40px;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fbfbf8;
+    border-radius: 12px;
+}
+
+.get-started-title {
+    font-size: 36px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.get-started-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.get-started-button {
+    border-radius: 999px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.get-started-button--primary {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+.get-started-button--primary:hover {
+    background-color: #111;
+}
+
+.get-started-button--secondary {
+    background-color: #e6e5e0;
+    color: #333;
+}
+
+.get-started-button--secondary:hover {
     background-color: #D8D6CE;
 }
