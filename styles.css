@@ -30,6 +30,8 @@ body {
     width: 320px;
     min-height: 400px;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-title {
@@ -47,6 +49,7 @@ body {
 
 .card-content {
     margin-bottom: 24px;
+    flex: 1;
 }
 
 .includes-text {
