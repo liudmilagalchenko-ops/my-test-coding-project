@@ -17,14 +17,14 @@ body {
 .cards-container {
     display: flex;
     flex-direction: row;
-    gap: 24px;
+    gap: 32px;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
 }
 
 .card {
-    background-color: #f2f1ed;
+    background-color: #d3cfbe;
     border-radius: 12px;
     padding: 40px 32px;
     width: 320px;
@@ -45,7 +45,7 @@ body {
 }
 
 .card-content {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 .includes-text {
@@ -79,7 +79,7 @@ body {
     background-color: #e6e5e0;
     border: none;
     border-radius: 999px;
-    padding: 14px 24px;
+    padding: 14px 32px;
     font-size: 16px;
     font-weight: 500;
     color: #333;
