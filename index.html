@@ -34,11 +34,13 @@
     </div>
     <div class="cards-container">
         <div class="card" data-plan="hobby">
-            <h1 class="card-title">Hobby</h1>
+            <h3 class="card-title">Hobby</h3>
             <p class="card-price"
-               data-price-monthly="Free"
-               data-price-yearly="Free">
-               Free
+               data-price-monthly-amount="Free"
+               data-price-monthly-period=""
+               data-price-yearly-amount="Free"
+               data-price-yearly-period="">
+               <span class="card-price-amount">Free</span>
             </p>
             <div class="card-content">
                 <p class="includes-text">Includes:</p>
@@ -61,13 +63,16 @@
         </div>
         <div class="card" data-plan="pro">
             <div class="card-header">
-                <h1 class="card-title">Pro</h1>
+                <h3 class="card-title">Pro</h3>
                 <span class="card-tag card-tag--recommended">Recommended</span>
             </div>
             <p class="card-price"
-               data-price-monthly="$20/mo."
-               data-price-yearly="$200/yr.">
-               $20/mo.
+               data-price-monthly-amount="$20"
+               data-price-monthly-period="/mo."
+               data-price-yearly-amount="$200"
+               data-price-yearly-period="/yr.">
+               <span class="card-price-amount">$20</span>
+               <span class="card-price-period">/mo.</span>
             </p>
             <div class="card-content">
                 <p class="includes-text">Everything in Hobby, plus:</p>
@@ -93,11 +98,14 @@
             <button class="download-button">Get Pro</button>
         </div>
         <div class="card" data-plan="ultra">
-            <h1 class="card-title">Ultra</h1>
+            <h3 class="card-title">Ultra</h3>
             <p class="card-price"
-               data-price-monthly="$40/mo."
-               data-price-yearly="$400/yr.">
-               $40/mo.
+               data-price-monthly-amount="$40"
+               data-price-monthly-period="/mo."
+               data-price-yearly-amount="$400"
+               data-price-yearly-period="/yr.">
+               <span class="card-price-amount">$40</span>
+               <span class="card-price-period">/mo.</span>
             </p>
             <div class="card-content">
                 <p class="includes-text">Everything in Pro, plus:</p>
@@ -128,11 +136,14 @@
         <h3 class="section-title">Business Plans</h3>
         <div class="cards-container cards-container--business">
             <div class="card" data-plan="teams">
-                <h1 class="card-title">Teams</h1>
+                <h3 class="card-title">Teams</h3>
                 <p class="card-price"
-                   data-price-monthly="$40 / user / mo."
-                   data-price-yearly="$400 / user / yr.">
-                   $40 / user / mo.
+                   data-price-monthly-amount="$40"
+                   data-price-monthly-period="/ user / mo."
+                   data-price-yearly-amount="$400"
+                   data-price-yearly-period="/ user / yr.">
+                   <span class="card-price-amount">$40</span>
+                   <span class="card-price-period">/ user / mo.</span>
                 </p>
                 <div class="card-content">
                     <p class="includes-text">Built for growing teams:</p>
@@ -154,11 +165,13 @@
                 <button class="download-button">Get Teams</button>
             </div>
             <div class="card" data-plan="enterprise">
-                <h1 class="card-title">Enterprise</h1>
+                <h3 class="card-title">Enterprise</h3>
                 <p class="card-price"
-                   data-price-monthly="Custom"
-                   data-price-yearly="Custom">
-                   Custom
+                   data-price-monthly-amount="Custom"
+                   data-price-monthly-period=""
+                   data-price-yearly-amount="Custom"
+                   data-price-yearly-period="">
+                   <span class="card-price-amount">Custom</span>
                 </p>
                 <div class="card-content">
                     <p class="includes-text">For large organizations:</p>
@@ -399,11 +412,28 @@
             });
 
             priceElements.forEach(priceEl => {
-                const monthly = priceEl.getAttribute('data-price-monthly');
-                const yearly = priceEl.getAttribute('data-price-yearly');
-                const next = billing === 'yearly' ? yearly : monthly;
+                const amountSpan = priceEl.querySelector('.card-price-amount');
+                const periodSpan = priceEl.querySelector('.card-price-period');
 
-                if (next) priceEl.textContent = next;
+                const prefix = billing === 'yearly' ? 'data-price-yearly-' : 'data-price-monthly-';
+                const amount = priceEl.getAttribute(prefix + 'amount');
+                const period = priceEl.getAttribute(prefix + 'period');
+
+                if (amountSpan && amount) {
+                    amountSpan.textContent = amount;
+                }
+
+                if (periodSpan) {
+                    if (period) {
+                        periodSpan.textContent = period;
+                        periodSpan.style.display = '';
+                    } else {
+                        periodSpan.textContent = '';
+                        periodSpan.style.display = 'none';
+                    }
+                } else if (!amountSpan && amount) {
+                    priceEl.textContent = period ? amount + ' ' + period : amount;
+                }
             });
         }
 
